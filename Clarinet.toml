@@ -1,0 +1,33 @@
+[project]
+name = 'STXCompounder'
+description = ''
+authors = []
+telemetry = true
+cache_dir = '.\.cache'
+requirements = []
+
+[contracts.STXCompounder]
+path = 'contracts/STXCompounder.clar'
+clarity_version = 3
+epoch = 3.1
+
+[contracts.STXRewardsDistributor]
+path = 'contracts/STXRewardsDistributor.clar'
+clarity_version = 3
+epoch = 3.1
+depends_on = ["STXCompounder"]
+
+[contracts.Governance]
+path = 'contracts/Governance.clar'
+clarity_version = 3
+epoch = 3.1
+depends_on = ["STXCompounder"]
+
+[repl.analysis]
+passes = ['check_checker']
+
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
